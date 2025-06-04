@@ -2,19 +2,18 @@
 #define LOADER_H
 
 #include "definitions.h"
-
+#include "../utils/colors.cpp"
 
 UserType temporalUser;
 
 int routerMenu = 0;
 
-
-//informacion del player
+// informacion del player
 string playeName = "Steve";
 int playeMaxDamagePerAttack = 300;
 int playerMaxLife = 1200;
 int plusLife = 500;
-int plusAttack= 850;
+int plusAttack = 850;
 string description = "";
 
 bool haveShieldPlayer = false;
@@ -30,5 +29,9 @@ int bossMaxLife = 3000;
 bool isBossDied = false;
 bool isPlayerDied = false;
 
-#endif // !LOADER_H
+Colors getColors() {
+    Colors colors = Colors();
+    return colors;
+}
 
+#endif // !LOADER_H

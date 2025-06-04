@@ -7,12 +7,8 @@
 
 void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
 {
-    init_pair(2, COLOR_GREEN, COLOR_BLACK);
-    init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-    init_pair(4, COLOR_YELLOW, COLOR_BLACK);
-
     wattron( window, A_STANDOUT);
-    wattron( window, COLOR_PAIR(2));
+    wattron( window, getColors().greenColor );
         // Sombrero o casco
         mvwaddch(window, y, x, ACS_ULCORNER);
         mvwaddch(window, y, x + 1, ACS_HLINE);
@@ -29,7 +25,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
         mvwaddch(window, y + 1, x + 5, ACS_HLINE);
         mvwaddch(window, y + 1, x + 6, ACS_LRCORNER);
     wattroff( window, A_STANDOUT);
-    wattroff( window, COLOR_PAIR(2));
+    wattroff( window, getColors().greenColor );
 
     // Cabeza
     mvwaddch(window, y + 2, x, ACS_VLINE);
@@ -43,7 +39,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
     mvwaddch(window, y + 3, x, ACS_LLCORNER);
     mvwaddch(window, y + 3, x + 5, ACS_LRCORNER);
 
-    wattron( window, COLOR_PAIR(4));
+    wattron( window, getColors().yellowColor );
         // cuerpo
         mvwaddch(window, y + 3, x + 6, ACS_HLINE);
         mvwaddch(window, y + 3, x - 1, ACS_HLINE);
@@ -62,7 +58,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
         mvwaddch(window, y + 4, x + 5, ACS_VLINE);
         mvwaddch(window, y + 4, x + 7, ACS_VLINE);
         mvwaddch(window, y + 5, x + 7, ACS_LRCORNER);
-    wattroff( window, COLOR_PAIR(4));
+    wattroff( window, getColors().yellowColor );
 
     // piernas
     mvwaddch(window, y + 6, x, ACS_VLINE);
@@ -83,11 +79,11 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
     mvwaddch(window, y + 8, x + 5, ACS_HLINE);
     mvwaddch(window, y + 8, x + 6, ACS_LRCORNER);
 
-    wattron( window, COLOR_PAIR(3));
+    wattron( window, getColors().yellowColor );
     // ojos
         mvwaddch(window, y + 2, x + 2, '0');
         mvwaddch(window, y + 2, x + 4, '0');
-    wattroff( window, COLOR_PAIR(3));
+    wattroff( window, getColors().yellowColor );
 
     if(hasSword){
         //cambio de mano
@@ -101,7 +97,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
         mvwaddch(window,  y + 4, x + 8, ACS_URCORNER );
         mvwaddch(window,  y + 4, x + 9, ACS_ULCORNER );
 
-        wattron( window, COLOR_PAIR(2));
+        wattron( window, getColors().greenColor );
             //filo izquierdo
             mvwaddch(window,  y + 3, x + 8, ACS_VLINE );
             mvwaddch(window,  y + 2, x + 8, ACS_VLINE );
@@ -112,7 +108,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
             mvwaddch(window,  y + 2, x + 9, ACS_VLINE );
             mvwaddch(window,  y + 1, x + 9, ACS_VLINE );
             mvwaddch(window,  y , x + 9, ACS_URCORNER );
-        wattroff( window, COLOR_PAIR(2));
+        wattroff( window, getColors().greenColor );
        
     }
 
@@ -130,7 +126,7 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
         wattroff( window, COLOR_PAIR(4));
 
         wattron( window, A_STANDOUT);
-        wattron( window, COLOR_PAIR(2));
+        wattron( window, getColors().greenColor );
             //parte izquierda del escudo
             mvwaddch(window, y + 4, x - 2, ACS_HLINE);
             mvwaddch(window, y + 4, x - 1, ACS_HLINE);
@@ -155,15 +151,15 @@ void basePlayer(WINDOW *window, int y, int x, bool hasSword, bool hasShield)
             mvwaddch(window, y + 7, x - 1, ACS_HLINE);
             mvwaddch(window, y + 7, x - 3, ACS_HLINE);
         wattroff( window, A_STANDOUT);
-        wattroff( window, COLOR_PAIR(2));
+        wattroff( window, getColors().greenColor );
 
-        wattron( window, COLOR_PAIR(2));
+        wattron( window, getColors().greenColor );
             //cuadro del centro
             mvwaddch(window,  y + 5, x - 1, ACS_DIAMOND);
             mvwaddch(window,  y + 5, x - 2, ACS_DIAMOND);
             mvwaddch(window,  y + 6, x - 1, ACS_DIAMOND);
             mvwaddch(window,  y + 6, x - 2, ACS_DIAMOND);
-        wattroff( window, COLOR_PAIR(2));
+        wattroff( window, getColors().greenColor );
     }
 }
 
@@ -441,10 +437,8 @@ void swordStroke(WINDOW* window){
 
 void ball(WINDOW* window, int y, int x){
 
-    init_pair( 5, COLOR_RED, COLOR_BLACK );
-
     wattron( window, A_STANDOUT);
-    wattron( window, COLOR_PAIR(5));
+    wattron( window, getColors().redColor );
         mvwaddch(window, y + 2, x -1, ACS_DIAMOND );
 
         mvwaddch(window, y + 1, x , ACS_DIAMOND );
@@ -483,7 +477,7 @@ void ball(WINDOW* window, int y, int x){
         mvwaddch(window, y + 2, x + 6, ACS_DIAMOND );
         mvwaddch(window, y + 3, x + 6, ACS_DIAMOND );
     wattroff( window, A_STANDOUT);
-    wattroff( window, COLOR_PAIR(5));
+    wattroff( window, getColors().redColor );
 }
 
 void removeBall(WINDOW* window, int y, int x){
